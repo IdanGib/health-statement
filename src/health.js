@@ -8,10 +8,7 @@
     var runningTime = Date.now();
     var max_runningTime = 30000;
     var currentHref = location.href;
-    // localStorage.removeItem(setcred);return;
-    var creds = [
-        [ '5454650', 'Education5302038' ]
-    ];
+    var creds = [];
 
     var alreadySet = localStorage.getItem(setcred);
     if(!alreadySet) {
