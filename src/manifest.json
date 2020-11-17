@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+    "name": "Health",
+    "version": "1.0.0",
+    "browser_action": {
+        "default_title": "Health",
+        "default_popup": "popup.html" 
+    },
+    "permissions": [
+        "activeTab", "tabs"
+    ],
+    "content_scripts": [
+        {
+          "matches": [
+              "https://lgn.edu.gov.il/nidp/wsfed/*",
+              "https://parents.education.gov.il/prhnet/parents/rights-obligations-regulations/health-statement-kindergarden"
+    
+            ],
+          "js": ["health.js"]
+        }
+    ]
+}
