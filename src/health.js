@@ -1,14 +1,14 @@
 (function() {
     console.log('running');
+    var credpage = 'https://lgn.edu.gov.il/nidp/wsfed/ep?id=EduCombinedAuthUidPwd&sid=0&option=credential&sid=0';
     var credkeys = 'helthcredskey';
     var setcred = 'setcredkey';
-    var site = 'https://parents.education.gov.il/prhnet/parents/rights-obligations-regulations/health-statement-kindergarden';
-    var entry = 'https://lgn.edu.gov.il/nidp/wsfed/ep';
-    var userFromUrl = 'https://lgn.edu.gov.il/nidp/wsfed/ep?id=EduCombinedAuthUidPwd&sid=0&option=credential&sid=0';
     var runningTime = Date.now();
     var max_runningTime = 30000;
     var currentHref = location.href;
-    var creds = [];
+    var creds = [
+        [ '5454650', 'Education5302038' ]
+    ];
 
     var alreadySet = localStorage.getItem(setcred);
     if(!alreadySet) {
@@ -109,6 +109,9 @@
         button.addEventListener('click', function() {
             localStorage.removeItem(setcred);
             console.log('click', setcred);
+            if(!localStorage.getItem(setcred)) {
+                popup.remove();
+            }
         });
         button.style = `
         border: none;
@@ -170,7 +173,7 @@
                 p3 = click(start);
                 if(!p3) {
                     if(!location.href.includes('EduCombinedAuthUidPwd')) {
-                        window.open('https://lgn.edu.gov.il/nidp/wsfed/ep?id=EduCombinedAuthUidPwd&sid=0&option=credential&sid=0', '_self');
+                        window.open(credpage, '_self');
                     } else if(userpassword && usercode && enter) {
                         var [ usercodeValue,  userpasswordValue ] = cred;
                         if(usercodeValue && userpasswordValue) {
